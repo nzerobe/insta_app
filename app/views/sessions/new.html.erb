@@ -1,0 +1,8 @@
+<%= form_with(scope: :session, url: sessions_path, local: true, method: :post) do |f| %>
+  <p><%= f.label :email %>
+  <%= f.email_field :email %></p>
+  <p><%= f.label :password %>
+  <%= f.password_field :password %></p>
+  <%= f.submit "ログイン" %>
+<% end %>
+<%= link_to "一覧に戻る" ,blogs_path %>

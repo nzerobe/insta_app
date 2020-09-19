@@ -1,0 +1,16 @@
+
+
+<%= form_with(model: @user, local: true, url: user_path(@user.id), method: :patch) do |f| %>
+  <p><%= f.label :name %>
+  <%= f.text_field :name %></p>
+  <p><%= f.label :email %>
+  <%= f.email_field :email %></p>
+  <p><%= f.label :password %>
+  <%= f.text_field :password %></p>
+  <p><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></p>
+  <p><%= f.label :イメージ %></p>
+  <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+  <p><%= f.file_field :image %></p>
+  <%= f.submit "保存" %>
+<% end %>

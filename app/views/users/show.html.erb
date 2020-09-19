@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<strong>image</strong>
+<%= image_tag @user.image.url %>
+<p><%= @user.name %>のページ</p>
+
+
+
+<p><%= @user.email %></p>
+<% @blogs.each do |blog| %>
+  <p><%= image_tag(blog.image.url) %></p>
+  <p><%= blog.content %></p>
+<% end %>
+<p><%= link_to "編集", edit_user_path(@user.id) %></p>
+<p><%= link_to "ユーザー一覧へ", users_path %></p>
+<%= link_to "新規投稿" ,new_blog_path %>

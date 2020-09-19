@@ -1,0 +1,6 @@
+<%= link_to "新規投稿" ,new_blog_path %>
+
+<% @blogs.each do |blog| %>
+  <p><%= link_to image_tag(blog.image.url), blog_path(blog.id) %></p>
+  <p><%= link_to blog.content, blog_path(blog.id) %></p>
+<% end %>
