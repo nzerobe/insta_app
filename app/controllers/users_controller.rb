@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
   def update
     @user = User.find(params[:id])
-    if @user.update(blog_params)
+    if @user.update(user_params)
       redirect_to users_path, notice: "編集しました。"
     else
       render :edit

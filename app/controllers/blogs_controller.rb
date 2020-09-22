@@ -19,7 +19,7 @@ class BlogsController < ApplicationController
     @blog.user_id = current_user.id
     if @blog.save
       redirect_to blogs_path, notice: "ブログを作成しました！"
-      # BlogMailer.blog_mail(@blog).deliver
+      BlogMailer.blog_mail(@blog).deliver
     else
       render :new
     end
