@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :require_logged_in
 
   def index
     @blogs = Blog.all
@@ -18,6 +19,7 @@ class BlogsController < ApplicationController
     @blog.user_id = current_user.id
     if @blog.save
       redirect_to blogs_path, notice: "ブログを作成しました！"
+      BlogMailer.blog_mail(@blog).deliver
     else
       render :new
     end
@@ -50,5 +52,11 @@ class BlogsController < ApplicationController
   private
   def blog_params
     params.require(:blog).permit(:image, :content, :image_cache)
+  end
+
+  def require_logged_in
+    unless logged_in?
+      redirect_to new_session_path, notice: "ログインしてください。"
+    end
   end
 end

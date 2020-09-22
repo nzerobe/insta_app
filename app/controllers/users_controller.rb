@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in, only: [:index, :show]
 
   def index
     @users = User.all
@@ -38,5 +39,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
 
+  def require_logged_in
+    unless logged_in?
+      redirect_to new_session_path, notice: "ログインしてください。"
+    end
+  end
 
 end

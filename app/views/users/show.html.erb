@@ -4,12 +4,14 @@
 
 <div class="user_box clearfix">
   <p class="photo_user"><%= image_tag @user.image.url %></p>
-  <% if current_user.id == @user.id %>
+  <% if current_user == @user %>
     <p><%= link_to "編集", edit_user_path(@user.id) %></p>
   <% end %>
 </div>
 
 <% @blogs.each do |blog| %>
-  <p><%= image_tag(blog.image.url) %></p>
-  <p><%= blog.content %></p>
+  <div class="feed center-block">
+    <p><%= link_to image_tag(blog.image.url, class: "img-responsive"), blog_path(blog.id) %></p>
+    <div class="sentence_area"><p><%= link_to blog.content, blog_path(blog.id) %></p></div>
+  </div>
 <% end %>

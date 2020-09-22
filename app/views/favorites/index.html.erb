@@ -1,4 +1,7 @@
+<h2>お気に入り</h2>
 <% @favorites.each do |favorite| %>
-  <p><%= link_to image_tag(favorite.blog.image.url), blog_path(favorite.blog.id) %></p>
-  <p><%= link_to favorite.blog.content, blog_path(favorite.blog.id) %></p>
+<div class="feed center-block">
+  <p><%= link_to image_tag(favorite.blog.image.url, class: "img-responsive"), blog_path(favorite.blog.id) %></p>
+  <div class="sentence_area"><p><%= link_to favorite.blog.content, blog_path(favorite.blog.id) %></p></div>
+</div>
 <% end %>

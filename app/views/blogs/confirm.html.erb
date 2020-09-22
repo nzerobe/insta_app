@@ -1,7 +1,7 @@
 
 <% if @blog.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this <%= @blog.content %> from being saved:</h2>
+    <h2><%= pluralize(@blog.errors.count, "error") %> エラーによって <%= @blog.content %> を保存できませんでした。</h2>
     <ul>
     <% @blog.errors.full_messages.each do |message| %>
       <li><%= message %></li>
