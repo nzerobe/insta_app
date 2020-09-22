@@ -4,23 +4,44 @@
     <title>InstaApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <h1><%= link_to "InstaApp", blogs_path %></h1>
-    <% if logged_in? %>
-      <%= link_to "マイページ", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "サインアップ", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
-    <% end %>
-    <%= yield %>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+            <span class="sr-only">Bootstrap</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <h1><%= link_to "InstaApp", blogs_path,class: "navbar-brand" %></h1>
+        </div>
+        <div id="gnavi" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <li><%= link_to "＋新規投稿" ,new_blog_path %></li>
+              <li><%= link_to "ユーザー一覧" ,users_path %></li>
+              <li><%= link_to "お気に入り" ,favorites_path %></li>
+              <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+              <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+            <% else %>
+              <li><%= link_to "サインアップ", new_user_path %></li>
+              <li><%= link_to "ログイン", new_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

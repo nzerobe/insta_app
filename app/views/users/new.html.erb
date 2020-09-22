@@ -10,7 +10,8 @@
   </div>
 <% end %>
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.file_field :image %>
+  <p><%= f.label :イメージ %>
+  <%= f.file_field :image %></p>
   <p><%= f.label :name %>
   <%= f.text_field :name %></p>
   <p><%= f.label :email %>

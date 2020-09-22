@@ -1,6 +1,9 @@
 <h1>ユーザー一覧</h1>
-<% @users.each do |user| %>
-  <p><%= image_tag user.image.url %><%= link_to user.name, user_path(user.id) %></p>
-<% end %>
-
-<%= link_to "新規投稿" ,new_blog_path %>
+<div id = "user_page">
+  <% @users.each do |user| %>
+  <div class="user_box clearfix">
+    <p class="photo_user"><%= link_to image_tag(user.image.url), user_path(user.id) %></p>
+    <p class="name_user"><%= link_to user.name, user_path(user.id) %></p>
+  </div>
+  <% end %>
+</div>

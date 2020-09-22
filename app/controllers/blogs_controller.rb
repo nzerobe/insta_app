@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find(params[:id])
+    @user = @blog.user
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
@@ -27,6 +28,9 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
+    if @blog.user != current_user
+      redirect_to blogs_path, notice: "権限がありません。"
+    end
   end
   def update
     @blog = Blog.find(params[:id])
@@ -40,7 +44,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy
-    redirect_to blog_path, notice: "削除しました。"
+    redirect_to blogs_path, notice: "削除しました。"
   end
 
   private

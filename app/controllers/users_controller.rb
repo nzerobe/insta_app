@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
   end
@@ -19,8 +20,10 @@ class UsersController < ApplicationController
   end
   def edit
     @user = User.find(params[:id])
+    if current_user != @user
+      redirect_to blogs_path, notice: "権限がありません。"
+    end
   end
-
   def update
     @user = User.find(params[:id])
     if @user.update(blog_params)
@@ -34,4 +37,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
+
+
 end

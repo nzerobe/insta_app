@@ -1,0 +1,82 @@
+body {
+  background-color: rgba(var(--b3f,250,250,250),1);
+  a:hover, a img:hover {
+    opacity: 0.6;
+  }
+  .navbar {
+    background-color: #fff;
+    border-radius: 0;
+    border: none;
+  }
+  .container {
+    .navbar-brand {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.3rem;
+      padding: 0;
+      color: #49749a;
+    }
+    .navbar-default {
+      border-bottom: solid 1px #eee;
+    }
+    #gnavi {
+      background-color: #fff;
+    }
+    .feed {
+      border: solid 1px #eee;
+      border-radius: 6px;
+      margin-bottom: 24px;
+      background: #fff;
+      max-width: 660px;
+      .name_area {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 1.5rem 0 0.5rem 2rem;
+        .thumb_photo {
+          margin-right: 1rem;
+          img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 100px;
+            border: solid 0.5px #ddd;
+          }
+        }
+        .thumb_name {
+        }
+      }
+        .sentence_area {
+          margin: 1.5rem 0 0.5rem 2rem;
+          .sentence {
+            margin: 0 0 1rem 0rem;
+          }
+          .time {
+            font-size: 1.2rem;
+            color: #888;
+          }
+        }
+    }
+
+    .user_box {
+      margin-bottom: 3rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .photo_user {
+        img {
+          width:100px;
+        	height:100px;
+          border: solid 0.5px #ddd;
+        	object-fit:cover;
+        	border-radius:50%;
+          margin-right: 20px;
+        }
+      }
+      .name_user {
+
+      }
+    }
+  }
+
+
+}

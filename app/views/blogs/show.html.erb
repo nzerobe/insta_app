@@ -1,15 +1,29 @@
 <p id="notice"><%= notice %></p>
-<p><%= image_tag @blog.image.url %></p>
-<p><%= @blog.content %></p>
 
-<% unless @blog.user_id == current_user.id %>
-<% if @favorite.present? %>
-  <%= link_to "お気に入り解除する",favorite_path(id: @favorite.id), method: :delete %>
-<% else %>
-  <%= link_to "お気に入りする", favorites_path(blog_id: @blog.id), method: :post %>
-<% end %>
-<% end %>
+<div class="feed center-block">
+  <div class="name_area">
+    <p class="thumb_photo"><%= image_tag @blog.user.image.url %></p>
+    <p class="thumb_name"><%= @blog.user.name %></p>
+  </div>
+  <p><%= image_tag @blog.image.url, class: "img-responsive" %></p>
+<div class="sentence_area">
+  <p class="sentence"><%= @blog.content %></p>
+  <p class="time"><%= @blog.created_at %></p>
+</div>
+  <% unless @blog.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to "お気に入り解除する",favorite_path(id: @favorite.id), method: :delete %>
+  <% else %>
+    <%= link_to "お気に入りする", favorites_path(blog_id: @blog.id), method: :post %>
+  <% end %>
+  <% end %>
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
-<%= link_to '削除', blog_path(@blog.id) ,method: :delete %>
+<div class="edit_area">
+<% if current_user == @user %>
+  <%= link_to '編集', edit_blog_path(@blog) %> |
+  <%= link_to '削除', blog_path(@blog.id) ,method: :delete %>
+<% end %>
+  <%= link_to '投稿一覧', blogs_path %>
+</div>
+
+</div>
